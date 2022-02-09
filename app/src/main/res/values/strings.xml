@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Drawing Task</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="action_line">Line</string>
+    <string name="action_smoothline">Smoothline</string>
+    <string name="action_square">Square</string>
+    <string name="action_circle">Circle</string>
+    <string name="action_rectangle">Rectangle</string>
+    <string name="action_triangle">Triangle</string>
+    <string name="action_arrow">Arrow</string>
+    <string name="palette">Palette</string>
+</resources>

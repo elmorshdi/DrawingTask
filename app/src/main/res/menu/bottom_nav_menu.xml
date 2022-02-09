@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+
+
+
+    <item android:id="@+id/action_smoothline"
+        android:title="@string/action_smoothline"
+        android:icon="@drawable/ic_shape"
+        />
+
+    <item android:id="@+id/action_arrow"
+        android:title="@string/action_arrow"
+        android:icon="@drawable/ic_arrow"
+
+       />
+    <item android:id="@+id/action_rectangle"
+        android:icon="@drawable/ic_rectangle_465"
+        android:title="@string/action_rectangle"
+         />
+
+
+
+    <item android:id="@+id/action_circle"
+        android:title="@string/action_circle"
+        android:icon="@drawable/ic_ellipse_139"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/palette"
+        android:title="@string/palette"
+        android:icon="@drawable/ic_carbon_color_palette"
+         />
+
+</menu>
