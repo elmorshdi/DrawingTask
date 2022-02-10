@@ -11,19 +11,13 @@ import kotlin.math.abs
 
 open class DrawingView : View {
     var mCurrentShape = 0
-    var color = "#FF3700B3"
+    var color = "#FF000000"
     private lateinit var mPath: Path
     private lateinit var mPaint: Paint
     private lateinit var mPaintFinal: Paint
     private  lateinit  var mBitmap: Bitmap
     private lateinit var mCanvas: Canvas
-
-
-
     private var isDrawing = false
-
-
-
     private var mStartX = 0f
     private var mStartY = 0f
     private var mx = 0f
@@ -97,10 +91,7 @@ open class DrawingView : View {
          }
         return true
     }
-
-
     // Line
-
     private fun onDrawLine(canvas: Canvas) {
         val dx = abs(mx - mStartX)
         val dy = abs(my - mStartY)
@@ -138,15 +129,12 @@ open class DrawingView : View {
             }
         }
     }
-
-
     // Circle
     private fun onDrawCircle(canvas: Canvas) {
         canvas.drawOval(mStartX, mStartY, mx, my ,
             this.mPaint
         )
     }
-
     private fun onTouchEventCircle(event: MotionEvent) {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -168,16 +156,10 @@ open class DrawingView : View {
             }
         }
     }
-
-
-
-
     // Rectangle
-
     private fun onDrawRectangle(canvas: Canvas) {
         drawRectangle(canvas, this.mPaint)
     }
-
     private fun onTouchEventRectangle(event: MotionEvent) {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -194,7 +176,6 @@ open class DrawingView : View {
             }
         }
     }
-
     private fun drawRectangle(canvas: Canvas, paint: Paint) {
         val right = if (mStartX > mx) mStartX else mx
         val left = if (mStartX > mx) mx else mStartX
@@ -202,12 +183,10 @@ open class DrawingView : View {
         val top = if (mStartY > my) my else mStartY
         canvas.drawRect(left, top, right, bottom, paint)
     }
-
     // Arrow
     private fun onDrawArrow(canvas: Canvas) {
         canvas.drawPath(this.mPath, this.mPaint)
     }
-
     private fun onTouchEventArrow(event: MotionEvent) {
         val eventX = event.x
         val eventY = event.y
