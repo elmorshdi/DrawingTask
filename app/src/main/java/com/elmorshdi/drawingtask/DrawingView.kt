@@ -18,14 +18,10 @@ open class DrawingView : View {
     private lateinit var mCanvas: Canvas
 
 
-    /**
-     * Indicates if you are drawing
-     */
+
     private var isDrawing = false
 
-    /**
-     * Indicates if the drawing is ended
-     */
+
 
     private var mStartX = 0f
     private var mStartY = 0f
@@ -67,8 +63,7 @@ open class DrawingView : View {
                 RECTANGLE -> onDrawRectangle(canvas)
                 ARROW -> onDrawArrow(canvas)
                 CIRCLE -> onDrawCircle(canvas)
-//                TRIANGLE -> onDrawTriangle(canvas)
-            }
+             }
         }
     }
 
@@ -102,13 +97,11 @@ open class DrawingView : View {
         mx = event.x
         my = event.y
         when (mCurrentShape) {
-//            LINE -> onTouchEventLine(event)
-            LINE -> onTouchEventSmoothLine(event)
+             LINE -> onTouchEventSmoothLine(event)
             RECTANGLE -> onTouchEventRectangle(event)
             ARROW -> onTouchEventArrow(event)
             CIRCLE -> onTouchEventCircle(event)
-//            TRIANGLE -> onTouchEventTriangle(event)
-        }
+         }
         return true
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
@@ -9,21 +9,78 @@
     tools:ignore="MergeRootFrame"
     android:background="@color/white"
     android:orientation="vertical">
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_margin="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/round_back"
+        android:padding="4dp"
         app:itemIconTint="@drawable/bottom_navigation_foreground"
         app:itemTextColor="@drawable/bottom_navigation_foreground"
         app:menu="@menu/bottom_nav_menu" />
 
+    <LinearLayout
+        android:id="@+id/color_palette"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+         android:layout_marginEnd="18dp"
+        android:layout_below="@id/bottomNavigationView"
+        android:background="@drawable/round_back"
+        android:orientation="horizontal"
+        android:padding="5dp"
+
+        android:visibility="invisible">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btBlack"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:background="@color/black"
+            android:contentDescription="@string/black"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btBlue"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:background="@color/blue"
+            android:contentDescription="@string/blue"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btRed"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:background="@color/red"
+            android:contentDescription="@string/red"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btGreen"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:background="@color/green"
+            android:contentDescription="@string/green"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
 
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:id="@+id/container"
-/>
-</LinearLayout>
+        android:layout_below="@id/color_palette"
+
+        android:background="@color/white" />
+</RelativeLayout>

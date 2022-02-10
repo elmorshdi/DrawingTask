@@ -10,4 +10,8 @@
     <string name="action_triangle">Triangle</string>
     <string name="action_arrow">Arrow</string>
     <string name="palette">Palette</string>
+    <string name="green">green</string>
+    <string name="red">red</string>
+    <string name="blue">blue</string>
+    <string name="black">black</string>
 </resources>

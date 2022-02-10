@@ -2,6 +2,9 @@ package com.elmorshdi.drawingtask
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,6 +15,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 open class ShapeFragment : Fragment() {
     private lateinit var mDrawingView: DrawingView
+    private lateinit var colorPalette: LinearLayout
+    private lateinit var colorBlack: AppCompatButton
+    private lateinit var colorBlue: AppCompatButton
+    private lateinit var colorGreen: AppCompatButton
+    private lateinit var colorRed: AppCompatButton
+
     private lateinit var bottomNavigationView:BottomNavigationView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,7 +37,13 @@ open class ShapeFragment : Fragment() {
         mDrawingView = rootView.findViewById(R.id.drawingview)
         mDrawingView.mCurrentShape = DrawingView.LINE
         mDrawingView.reset()
-         bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
+        colorRed = activity?.findViewById(R.id.btRed) as AppCompatButton
+        colorBlue = activity?.findViewById(R.id.btBlue) as AppCompatButton
+        colorBlack = activity?.findViewById(R.id.btBlack) as AppCompatButton
+        colorGreen = activity?.findViewById(R.id.btGreen) as AppCompatButton
+
+        colorPalette = activity?.findViewById(R.id.color_palette) as LinearLayout
+        bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
         return rootView
     }
 
@@ -36,24 +51,33 @@ open class ShapeFragment : Fragment() {
          bottomNavigationView.setOnNavigationItemSelectedListener { item ->
              when (item.itemId) {
             R.id.action_smoothline -> {
+                colorPalette.visibility=View.INVISIBLE
+
                 mDrawingView.mCurrentShape = DrawingView.LINE
                 mDrawingView.reset()
             }
             R.id.action_rectangle -> {
+                colorPalette.visibility=View.INVISIBLE
+
                 mDrawingView.mCurrentShape = DrawingView.RECTANGLE
                 mDrawingView.reset()
             }
             R.id.action_arrow -> {
+                colorPalette.visibility=View.INVISIBLE
+
                 mDrawingView.mCurrentShape = DrawingView.ARROW
                 mDrawingView.reset()
             }
             R.id.action_circle -> {
+                colorPalette.visibility=View.INVISIBLE
+
                 mDrawingView.mCurrentShape = DrawingView.CIRCLE
                 mDrawingView.reset()
             }
             R.id.palette -> {
-                showPopup(requireActivity().findViewById(R.id.palette))
-
+                showPopup()
+                mDrawingView.mCurrentShape = DrawingView.LINE
+                mDrawingView.reset()
 
             }
         }
@@ -61,36 +85,37 @@ open class ShapeFragment : Fragment() {
 
     }
      }
-    private fun showPopup(view: View) {
-    val popup = PopupMenu(requireContext(), view)
-        val inflater = popup.menuInflater
-        inflater.inflate(R.menu.color_menu, popup.menu)
-        popup.show()
-    popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+    private fun showPopup() {
+    colorPalette.visibility=View.VISIBLE
 
-        when (item!!.itemId) {
-            R.id.black -> {
+            colorBlack.setOnClickListener(View.OnClickListener {
                 mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.color="#FF018786"
+                mDrawingView.color="#FF000000"
                 mDrawingView.reset()
-            }
-            R.id.blue -> {
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.color="#0078DE"
-                mDrawingView.reset()            }
-            R.id.green -> {
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.color="#007F00"
-                mDrawingView.reset()            }
-            R.id.red -> {
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.color="#FB0008"
-                mDrawingView.reset()            }
-        }
+                colorPalette.visibility=View.INVISIBLE
+            })
+        colorBlue.setOnClickListener(View.OnClickListener {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color="#0078DE"
+            mDrawingView.reset()
+            colorPalette.visibility=View.INVISIBLE
+        })
+        colorGreen.setOnClickListener(View.OnClickListener {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color="#007F00"
+            mDrawingView.reset()
+            colorPalette.visibility=View.INVISIBLE
+        })
+        colorRed.setOnClickListener(View.OnClickListener {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color="#FB0008"
+            mDrawingView.reset()
+            colorPalette.visibility=View.INVISIBLE
+        })
 
-        true
-    })
 
-    popup.show()
-}
+
+
+
+ }
 }
