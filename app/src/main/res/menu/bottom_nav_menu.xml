@@ -6,8 +6,8 @@
 
 
 
-    <item android:id="@+id/action_smoothline"
-        android:title="@string/action_smoothline"
+    <item android:id="@+id/action_line"
+        android:title="@string/action_line"
         android:icon="@drawable/ic_shape"
         />
 

@@ -1,16 +1,13 @@
 package com.elmorshdi.drawingtask
 
 import android.os.Bundle
-import android.view.*
-import android.widget.Button
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
-
-
 
 
 open class ShapeFragment : Fragment() {
@@ -21,7 +18,7 @@ open class ShapeFragment : Fragment() {
     private lateinit var colorGreen: AppCompatButton
     private lateinit var colorRed: AppCompatButton
 
-    private lateinit var bottomNavigationView:BottomNavigationView
+    private lateinit var bottomNavigationView: BottomNavigationView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         itemSelected()
@@ -34,7 +31,7 @@ open class ShapeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val rootView: View = inflater.inflate(R.layout.fragment_main, container, false)
-        mDrawingView = rootView.findViewById(R.id.drawingview)
+        mDrawingView = rootView.findViewById(R.id.drawing_view)
         mDrawingView.mCurrentShape = DrawingView.LINE
         mDrawingView.reset()
         colorRed = activity?.findViewById(R.id.btRed) as AppCompatButton
@@ -43,79 +40,78 @@ open class ShapeFragment : Fragment() {
         colorGreen = activity?.findViewById(R.id.btGreen) as AppCompatButton
 
         colorPalette = activity?.findViewById(R.id.color_palette) as LinearLayout
-        bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
+        bottomNavigationView =
+            activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
         return rootView
     }
 
-     private fun itemSelected() {
-         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-             when (item.itemId) {
-            R.id.action_smoothline -> {
-                colorPalette.visibility=View.INVISIBLE
+    private fun itemSelected() {
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.action_line -> {
+                    colorPalette.visibility = View.INVISIBLE
 
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.reset()
-            }
-            R.id.action_rectangle -> {
-                colorPalette.visibility=View.INVISIBLE
+                    mDrawingView.mCurrentShape = DrawingView.LINE
+                    mDrawingView.reset()
+                }
+                R.id.action_rectangle -> {
+                    colorPalette.visibility = View.INVISIBLE
 
-                mDrawingView.mCurrentShape = DrawingView.RECTANGLE
-                mDrawingView.reset()
-            }
-            R.id.action_arrow -> {
-                colorPalette.visibility=View.INVISIBLE
+                    mDrawingView.mCurrentShape = DrawingView.RECTANGLE
+                    mDrawingView.reset()
+                }
+                R.id.action_arrow -> {
+                    colorPalette.visibility = View.INVISIBLE
 
-                mDrawingView.mCurrentShape = DrawingView.ARROW
-                mDrawingView.reset()
-            }
-            R.id.action_circle -> {
-                colorPalette.visibility=View.INVISIBLE
+                    mDrawingView.mCurrentShape = DrawingView.ARROW
+                    mDrawingView.reset()
+                }
+                R.id.action_circle -> {
+                    colorPalette.visibility = View.INVISIBLE
 
-                mDrawingView.mCurrentShape = DrawingView.CIRCLE
-                mDrawingView.reset()
-            }
-            R.id.palette -> {
-                showPopup()
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.reset()
+                    mDrawingView.mCurrentShape = DrawingView.CIRCLE
+                    mDrawingView.reset()
+                }
+                R.id.palette -> {
+                    showPopup()
+                    mDrawingView.mCurrentShape = DrawingView.LINE
+                    mDrawingView.reset()
 
+                }
             }
+            true
+
         }
-             true
+    }
+
+    private fun showPopup() {
+        colorPalette.visibility = View.VISIBLE
+
+        colorBlack.setOnClickListener {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color = "#FF000000"
+            mDrawingView.reset()
+            colorPalette.visibility = View.INVISIBLE
+        }
+        colorBlue.setOnClickListener  {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color = "#0078DE"
+            mDrawingView.reset()
+            colorPalette.visibility = View.INVISIBLE
+        }
+        colorGreen.setOnClickListener  {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color = "#007F00"
+            mDrawingView.reset()
+            colorPalette.visibility = View.INVISIBLE
+        }
+        colorRed.setOnClickListener  {
+            mDrawingView.mCurrentShape = DrawingView.LINE
+            mDrawingView.color = "#FB0008"
+            mDrawingView.reset()
+            colorPalette.visibility = View.INVISIBLE
+        }
+
 
     }
-     }
-    private fun showPopup() {
-    colorPalette.visibility=View.VISIBLE
-
-            colorBlack.setOnClickListener(View.OnClickListener {
-                mDrawingView.mCurrentShape = DrawingView.LINE
-                mDrawingView.color="#FF000000"
-                mDrawingView.reset()
-                colorPalette.visibility=View.INVISIBLE
-            })
-        colorBlue.setOnClickListener(View.OnClickListener {
-            mDrawingView.mCurrentShape = DrawingView.LINE
-            mDrawingView.color="#0078DE"
-            mDrawingView.reset()
-            colorPalette.visibility=View.INVISIBLE
-        })
-        colorGreen.setOnClickListener(View.OnClickListener {
-            mDrawingView.mCurrentShape = DrawingView.LINE
-            mDrawingView.color="#007F00"
-            mDrawingView.reset()
-            colorPalette.visibility=View.INVISIBLE
-        })
-        colorRed.setOnClickListener(View.OnClickListener {
-            mDrawingView.mCurrentShape = DrawingView.LINE
-            mDrawingView.color="#FB0008"
-            mDrawingView.reset()
-            colorPalette.visibility=View.INVISIBLE
-        })
-
-
-
-
-
- }
 }
